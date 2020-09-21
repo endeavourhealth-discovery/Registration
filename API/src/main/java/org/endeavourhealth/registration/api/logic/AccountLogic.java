@@ -6,7 +6,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.endeavourhealth.common.config.ConfigManager;
 import org.endeavourhealth.common.security.keycloak.client.KeycloakAdminClient;
-import org.endeavourhealth.core.database.dal.usermanager.caching.UserCache;
 import org.endeavourhealth.core.database.dal.usermanager.models.JsonUserApplicationPolicy;
 import org.endeavourhealth.core.database.dal.usermanager.models.JsonUserProject;
 import org.endeavourhealth.core.database.dal.usermanager.models.JsonUserRegion;
@@ -63,7 +62,6 @@ public class AccountLogic {
 
         //Create the keycloak admin client and file the user
         KeycloakAdminClient keycloakClient = new KeycloakAdminClient();
-        //java.util.List<UserRepresentation> users = keycloakClient.realms().users().getUsers(account.getUserId(), 0, 100);
         java.util.List<UserRepresentation> users = keycloakClient.realms().users().getUsers("", 0, 100);
         for (UserRepresentation user : users) {
             if (account.getUserId().equalsIgnoreCase(user.getEmail())) {
@@ -75,16 +73,16 @@ public class AccountLogic {
             }
         }
 
+        UserRepresentation userRep = new UserRepresentation();
+        userRep.setEnabled(true);
+        userRep.setUsername(account.getUserId());
+        userRep.setLastName(account.getSurname());
+        userRep.setFirstName(account.getForename());
+        userRep.setEmail(account.getUserId());
+        userRep.singleAttribute("organisation-id", organisationId);
+
         try {
             //Set the basic user profile info
-            UserRepresentation userRep = new UserRepresentation();
-            userRep.setEnabled(true);
-            userRep.setUsername(account.getUserId());
-            userRep.setLastName(account.getSurname());
-            userRep.setFirstName(account.getForename());
-            userRep.setEmail(account.getUserId());
-            userRep.singleAttribute("organisation-id", organisationId);
-
             CredentialRepresentation credential = new CredentialRepresentation();
             credential.setType(CredentialRepresentation.PASSWORD);
             credential.setValue(account.getPassword());
@@ -95,10 +93,13 @@ public class AccountLogic {
 
             userRep = keycloakClient.realms().users().postUser(userRep);
 
-            keycloakClient.realms().users().putUserUpdatePasswordEmail(userRep);
-
             //auditUserAdd(userRep, projectId);
+        } catch (Exception e) {
+            LOG.error("Error occurred while posting to keycloack: " + e.getMessage());
+            throw e;
+        }
 
+        try {
             JsonUserProject userProject = new JsonUserProject();
             userProject.setId(UUID.randomUUID().toString());
 
@@ -120,13 +121,21 @@ public class AccountLogic {
             userApplicationPolicy.setUserId(userRep.getId());
             userApplicationPolicy.setApplicationPolicyId(applicationPolicyId);
             dal.saveApplicationPolicy(userApplicationPolicy, projectId);
-
-            LOG.info("Account Id: " + userRep.getId());
-            //UserCache.clearUserCache(userRep.getId());
         }
         catch (Exception e) {
-            e.printStackTrace();
-            LOG.error(e.getMessage());
+            LOG.error("Error occurred setting project/region/application policy: " + e.getMessage());
+            LOG.error("Deleting previously created keycloak user: " + userRep.getUsername());
+            keycloakClient.realms().users().deleteUser(userRep.getId());
+            throw e;
+        }
+        try {
+            keycloakClient.realms().users().putUserUpdatePasswordEmail(userRep);
+            LOG.info("Account Id: " + userRep.getId());
+        }
+        catch (Exception e) {
+            LOG.error("Error occurred sending the update password email: " + e.getMessage());
+            LOG.error("Deleting previously created keycloak user: " + userRep.getUsername());
+            keycloakClient.realms().users().deleteUser(userRep.getId());
             throw e;
         }
 

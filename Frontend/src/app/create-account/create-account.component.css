@@ -2,6 +2,12 @@
   width: 100%;
 }
 
-.half-width {
-  width: 50%;
+.half-width-l {
+  width: 49.5%;
+  float: left;
+}
+
+.half-width-r {
+  width: 49.5%;
+  float: right;
 }
