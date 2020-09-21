@@ -61,13 +61,6 @@ public class AccountLogic {
                     .build();
         }
 
-        /*
-        organisationId = "439e9f06-d54c-3eb6-b800-010863bf1399";
-        projectId = "fd2b2ec4-f623-40e2-a65a-739a6b0f1637";
-        applicationPolicyId = "d86fa19c-6561-48a6-8ef9-ea00268710f4";
-        regionId = "98cc873e-0c3b-4983-aabf-42acc60aa6db";
-         */
-
         //Create the keycloak admin client and file the user
         KeycloakAdminClient keycloakClient = new KeycloakAdminClient();
         //java.util.List<UserRepresentation> users = keycloakClient.realms().users().getUsers(account.getUserId(), 0, 100);
@@ -129,7 +122,7 @@ public class AccountLogic {
             dal.saveApplicationPolicy(userApplicationPolicy, projectId);
 
             LOG.info("Account Id: " + userRep.getId());
-            UserCache.clearUserCache(userRep.getId());
+            //UserCache.clearUserCache(userRep.getId());
         }
         catch (Exception e) {
             e.printStackTrace();
