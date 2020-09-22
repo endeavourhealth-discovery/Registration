@@ -7,6 +7,6 @@ files:
     destination: //opt/tomcat/webapps/registration
 hooks:
   BeforeInstall:
-    - location: UI/aws_scripts/cleanup
+    - location: /aws_scripts/cleanup
       timeout: 300
       runas: root
