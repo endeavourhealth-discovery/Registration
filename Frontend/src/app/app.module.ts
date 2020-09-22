@@ -12,6 +12,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { CreateAccountComponent } from "./create-account/create-account.component";
 import { CreateAccountService } from "./create-account/create-account.service";
 
+import {APP_BASE_HREF} from '@angular/common';
+
 @NgModule({
 
   declarations: [
@@ -35,6 +37,7 @@ import { CreateAccountService } from "./create-account/create-account.service";
   ],
 
   providers: [
+    {provide: APP_BASE_HREF, useValue: '/registration'},
     CreateAccountService
   ],
 
