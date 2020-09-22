@@ -13,7 +13,7 @@
 	<artifactId>Frontend</artifactId>
 
   <properties>
-    <sonar.projectKey>endeavourhealth-discovery_Registration::FrontEnd</sonar.projectKey>
+    <sonar.projectKey>endeavourhealth-discovery_Registration::Frontend</sonar.projectKey>
     <sonar.sources>src</sonar.sources>
     <sonar.typescript.tsconfigPath>tsconfig.json</sonar.typescript.tsconfigPath>
     <sonar.ts.tslint.configPath>tslint.json</sonar.ts.tslint.configPath>

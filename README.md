@@ -7,7 +7,7 @@
 
 Checkout from GIT
 
-`cd FrontEnd`
+`cd Frontend`
 
 `npm install` (you only have to do this once)
 
