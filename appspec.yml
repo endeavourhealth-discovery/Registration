@@ -1,7 +1,7 @@
 version: 0.0
 os: linux
 files:
-  - source: /Frontend/dist/Frontend
+  - source: /Frontend/dist/
     destination: //opt/tomcat/webapps/registration
   - source: /API/target/api
     destination: //opt/tomcat/webapps/registration
