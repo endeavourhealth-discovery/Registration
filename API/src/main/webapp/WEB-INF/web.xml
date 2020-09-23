@@ -5,7 +5,6 @@
          version="3.1">
 
     <display-name>Registration</display-name>
-
     <servlet>
         <servlet-name>RegistrationSerlvet</servlet-name>
         <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
