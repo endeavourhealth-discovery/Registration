@@ -102,11 +102,11 @@
     </dependency>
   </dependencies>
 
-  <artifactId>API</artifactId>
-  <version>0.0.1</version>
+  <artifactId>api</artifactId>
   <packaging>war</packaging>
 
   <build>
+	<finalName>api</finalName>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
