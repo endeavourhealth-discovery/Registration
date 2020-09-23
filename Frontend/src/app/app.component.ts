@@ -9,7 +9,7 @@ import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
 })
 export class AppComponent {
 
-  title = 'DiscoveryExplorer';
+  title = 'Registration';
 
   constructor(public matDialog: MatDialog) { }
 
