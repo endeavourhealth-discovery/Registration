@@ -1,12 +1,12 @@
 version: 0.0
 os: linux
 files:
-  - source: /Frontend/dist
+  - source: /Frontend/dist/Frontend
     destination: //opt/tomcat/webapps/registration
-  - source: /API/target/API-0.0.1
+  - source: /API/target/api
     destination: //opt/tomcat/webapps/registration
 hooks:
   BeforeInstall:
-    - location: /aws_scripts/cleanup
+    - location: aws_scripts/cleanup
       timeout: 300
       runas: root

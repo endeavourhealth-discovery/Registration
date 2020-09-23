@@ -1,18 +1,18 @@
 version: 0.2
 
 phases:
+  install:
+    runtime-versions:
+      java: openjdk8
   pre_build:
     commands:
       - IP=$(curl http://checkip.amazonaws.com)/32
       - echo $IP of CodeBuild Instance
   build:
     commands:
+      - echo Build started on `date`
       - chmod +x aws_scripts/build.sh
-      - echo Main build started on `date`
-      - aws_scripts/build.sh mvn -B deploy
-      - echo Analysis started on `date`
-      - mvn sonar:sonar
-
+      - aws_scripts/build.sh mvn -B package
   post_build:
     commands:
       - IP=$(curl http://checkip.amazonaws.com)/32
@@ -20,7 +20,7 @@ phases:
       - echo Build completed on `date`
 artifacts:
   files:
-    - Frontend/dist/**/*
-    - API/target/API-0.0.1/**/*
     - appspec.yml
     - aws_scripts/**/*
+    - API/target/api/**/*
+    - Frontend/dist/Frontend/**/*
