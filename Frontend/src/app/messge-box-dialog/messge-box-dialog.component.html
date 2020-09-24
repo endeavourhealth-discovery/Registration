@@ -1,8 +1,9 @@
 <div mat-dialog-content>
-  <p>{{message}}</p>
+  <p style="color:red;" *ngIf="status == 'close'">{{message}}</p>
+  <p style="color:black;" *ngIf="status == 'done_outline'">{{message}}</p>
 </div>
 <div mat-dialog-actions align="end">
   <button mat-flat-button color="accent" [mat-dialog-close]="">
-    Ok <mat-icon>{{status}}</mat-icon>
+    OK <mat-icon>{{status}}</mat-icon>
   </button>
 </div>
