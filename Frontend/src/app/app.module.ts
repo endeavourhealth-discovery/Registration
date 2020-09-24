@@ -5,18 +5,20 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
-import { MatInputModule, MatButtonModule } from '@angular/material';
+import { MatInputModule, MatButtonModule, MatIconModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 
 import { CreateAccountComponent } from "./create-account/create-account.component";
 import { CreateAccountService } from "./create-account/create-account.service";
+import { MessgeBoxDialogComponent } from './messge-box-dialog/messge-box-dialog.component';
 
 @NgModule({
 
   declarations: [
     AppComponent,
-    CreateAccountComponent
+    CreateAccountComponent,
+    MessgeBoxDialogComponent
   ],
 
   imports: [
@@ -27,11 +29,13 @@ import { CreateAccountService } from "./create-account/create-account.service";
     MatInputModule,
     MatButtonModule,
     MatDialogModule,
-    HttpClientModule
+    HttpClientModule,
+    MatIconModule
   ],
 
   entryComponents: [
-    CreateAccountComponent
+    CreateAccountComponent,
+    MessgeBoxDialogComponent
   ],
 
   providers: [
