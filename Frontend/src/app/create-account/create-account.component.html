@@ -28,7 +28,9 @@
       <input matInput [(ngModel)]="account.password"  type="password" placeholder="Confirm Password" name="confirmPassword" required #password2>
     </mat-form-field>
   </div>
-  <small class="required-field-note"></small>
+  <div class="flex" fxLayout="row wrap" fxLayoutGap="16px grid" fxLayoutAlign="start">
+    <small style="color:red;">* Required field</small>
+  </div>
 </form>
 <div mat-dialog-actions align="end">
   <button mat-button color="accent" (click)="close()">Cancel</button>
