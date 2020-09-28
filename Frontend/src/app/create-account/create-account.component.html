@@ -19,7 +19,7 @@
   <div class="flex" fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="16px grid" fxLayoutAlign="start">
     <mat-form-field appearance="outline" class="full-width">
       <mat-label>Password</mat-label>
-      <input matInput type="password" placeholder="Password" name="password" required #password1>
+      <input matInput type="password" [(ngModel)]="blank" placeholder="Password" name="password" required #password1>
     </mat-form-field>
   </div>
   <div class="flex" fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="16px grid" fxLayoutAlign="start">

@@ -17,6 +17,7 @@ export class CreateAccountComponent implements OnInit {
               public dialog: MatDialog) { }
 
   account : Account;
+  blank : string;
 
   @ViewChild('userId', { static: false }) userId;
   @ViewChild('forename', { static: false }) forename;
