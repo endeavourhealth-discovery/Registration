@@ -1,0 +1,13 @@
+.full-width {
+  width: 100%;
+}
+
+.half-width-l {
+  width: 49.9%;
+  float: left;
+}
+
+.half-width-r {
+  width: 49.9%;
+  float: right;
+}

@@ -9,37 +9,36 @@ import { MatInputModule, MatButtonModule, MatIconModule } from '@angular/materia
 import { FormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 
-import { CreateAccountComponent } from "./create-account/create-account.component";
-import { CreateAccountService } from "./create-account/create-account.service";
+import { AppService } from "./app.service";
 import { MessgeBoxDialogComponent } from './messge-box-dialog/messge-box-dialog.component';
+import { MatCardModule } from "@angular/material/card";
 
 @NgModule({
 
   declarations: [
     AppComponent,
-    CreateAccountComponent,
     MessgeBoxDialogComponent
   ],
 
-  imports: [
-    RouterModule,
-    BrowserModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    MatInputModule,
-    MatButtonModule,
-    MatDialogModule,
-    HttpClientModule,
-    MatIconModule
-  ],
+    imports: [
+        RouterModule,
+        BrowserModule,
+        BrowserAnimationsModule,
+        FormsModule,
+        MatInputModule,
+        MatButtonModule,
+        MatDialogModule,
+        HttpClientModule,
+        MatIconModule,
+        MatCardModule
+    ],
 
   entryComponents: [
-    CreateAccountComponent,
     MessgeBoxDialogComponent
   ],
 
   providers: [
-    CreateAccountService
+    AppService
   ],
 
   bootstrap: [AppComponent]
