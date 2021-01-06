@@ -1,47 +1,48 @@
-<br>
-<mat-card class="fixed-width">
-  <mat-card-header>
-    <div mat-card-avatar>
-      <i class="fad fa-user"></i>
-    </div>
-    <mat-card-title>Welcome to the Discovery Data Service</mat-card-title>
-    <mat-card-subtitle>Complete this form to create your Discovery account</mat-card-subtitle>
-    <div fxFlex></div>
-  </mat-card-header>
-  <mat-card-content>
-    <form class="form" #f="ngForm" novalidate>
-      <div class="flex" fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="16px grid" fxLayoutAlign="start">
-        <mat-form-field appearance="outline" class="full-width">
-          <mat-label>User Id (email)</mat-label>
-          <input matInput [(ngModel)]="account.userId" placeholder="User Id" name="userId" required #userId>
-        </mat-form-field>
+<div class="main-div">
+  <mat-card class="fixed-width">
+    <mat-card-header>
+      <div mat-card-avatar>
+        <i class="fad fa-user"></i>
       </div>
-      <div class="flex" fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="16px grid" fxLayoutAlign="start">
-        <mat-form-field appearance="outline" class="half-width-l">
-          <mat-label>Forename</mat-label>
-          <input matInput [(ngModel)]="account.forename" placeholder="Forename" name="forename" required #forename>
-        </mat-form-field>
-        <mat-form-field appearance="outline" class="half-width-r">
-          <mat-label>Surname</mat-label>
-          <input matInput [(ngModel)]="account.surname" placeholder="Surname" name="surname" required #surname>
-        </mat-form-field>
+      <mat-card-title>Welcome to the Discovery Data Service</mat-card-title>
+      <mat-card-subtitle>Complete this form to create your Discovery account</mat-card-subtitle>
+      <div fxFlex></div>
+    </mat-card-header>
+    <mat-card-content>
+      <form class="form" #f="ngForm" novalidate>
+        <div class="flex" fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="16px grid" fxLayoutAlign="start">
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>User Id (email)</mat-label>
+            <input matInput [(ngModel)]="account.userId" placeholder="User Id" name="userId" required #userId>
+          </mat-form-field>
+        </div>
+        <div class="flex" fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="16px grid" fxLayoutAlign="start">
+          <mat-form-field appearance="outline" class="half-width-l">
+            <mat-label>Forename</mat-label>
+            <input matInput [(ngModel)]="account.forename" placeholder="Forename" name="forename" required #forename>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="half-width-r">
+            <mat-label>Surname</mat-label>
+            <input matInput [(ngModel)]="account.surname" placeholder="Surname" name="surname" required #surname>
+          </mat-form-field>
+        </div>
+        <div class="flex" fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="16px grid" fxLayoutAlign="start">
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Password</mat-label>
+            <input matInput type="password" [(ngModel)]="blank" placeholder="Password" name="password" required #password1>
+          </mat-form-field>
+        </div>
+        <div class="flex" fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="16px grid" fxLayoutAlign="start">
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Confirm password</mat-label>
+            <input matInput [(ngModel)]="account.password"  type="password" placeholder="Confirm password" name="confirmPassword" required #password2>
+          </mat-form-field>
+        </div>
+      </form>
+      <br>
+      <div mat-dialog-actions align="end">
+        <button mat-flat-button color="accent" (click)="create()" [disabled]="isDisabled">Create account</button>
       </div>
-      <div class="flex" fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="16px grid" fxLayoutAlign="start">
-        <mat-form-field appearance="outline" class="full-width">
-          <mat-label>Password</mat-label>
-          <input matInput type="password" [(ngModel)]="blank" placeholder="Password" name="password" required #password1>
-        </mat-form-field>
-      </div>
-      <div class="flex" fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="16px grid" fxLayoutAlign="start">
-        <mat-form-field appearance="outline" class="full-width">
-          <mat-label>Confirm password</mat-label>
-          <input matInput [(ngModel)]="account.password"  type="password" placeholder="Confirm password" name="confirmPassword" required #password2>
-        </mat-form-field>
-      </div>
-    </form>
-    <br>
-    <div mat-dialog-actions align="end">
-      <button mat-flat-button color="accent" (click)="create()" [disabled]="isDisabled">Create account</button>
-    </div>
-  </mat-card-content>
-</mat-card>
+    </mat-card-content>
+  </mat-card>
+</div>
